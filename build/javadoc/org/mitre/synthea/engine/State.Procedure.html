@@ -221,13 +221,20 @@ extends <a href="../../../../org/mitre/synthea/engine/State.Delayable.html" titl
           <a href="../../../../org/mitre/synthea/world/agents/Person.html" title="class in org.mitre.synthea.world.agents">Person</a>&nbsp;person)</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/mitre/synthea/engine/State.Procedure.html#process-org.mitre.synthea.world.agents.Person-long-">process</a></span>(<a href="../../../../org/mitre/synthea/world/agents/Person.html" title="class in org.mitre.synthea.world.agents">Person</a>&nbsp;person,
-       long&nbsp;time)</code>
-<div class="block">Process this State with the given Person at the specified time within the simulation.</div>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/mitre/synthea/engine/State.Procedure.html#processOnce-org.mitre.synthea.world.agents.Person-long-">processOnce</a></span>(<a href="../../../../org/mitre/synthea/world/agents/Person.html" title="class in org.mitre.synthea.world.agents">Person</a>&nbsp;person,
+           long&nbsp;time)</code>
+<div class="block">Process any aspect of this state which should only happen once.</div>
 </td>
 </tr>
 </table>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.org.mitre.synthea.engine.State.Delayable">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.mitre.synthea.engine.<a href="../../../../org/mitre/synthea/engine/State.Delayable.html" title="class in org.mitre.synthea.engine">State.Delayable</a></h3>
+<code><a href="../../../../org/mitre/synthea/engine/State.Delayable.html#process-org.mitre.synthea.world.agents.Person-long-">process</a></code></li>
+</ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.org.mitre.synthea.engine.State">
 <!--   -->
@@ -304,27 +311,26 @@ extends <a href="../../../../org/mitre/synthea/engine/State.Delayable.html" titl
 </dl>
 </li>
 </ul>
-<a name="process-org.mitre.synthea.world.agents.Person-long-">
+<a name="processOnce-org.mitre.synthea.world.agents.Person-long-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>process</h4>
-<pre>public&nbsp;boolean&nbsp;process(<a href="../../../../org/mitre/synthea/world/agents/Person.html" title="class in org.mitre.synthea.world.agents">Person</a>&nbsp;person,
-                       long&nbsp;time)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../org/mitre/synthea/engine/State.html#process-org.mitre.synthea.world.agents.Person-long-">State</a></code></span></div>
-<div class="block">Process this State with the given Person at the specified time within the simulation.
- If this State generates a HealthRecord.Entry during processing, then the resulting data
- will reside in the State.entry field.</div>
+<h4>processOnce</h4>
+<pre>public&nbsp;void&nbsp;processOnce(<a href="../../../../org/mitre/synthea/world/agents/Person.html" title="class in org.mitre.synthea.world.agents">Person</a>&nbsp;person,
+                        long&nbsp;time)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../org/mitre/synthea/engine/State.Delayable.html#processOnce-org.mitre.synthea.world.agents.Person-long-">State.Delayable</a></code></span></div>
+<div class="block">Process any aspect of this state which should only happen once.
+ Because of the nature of Delay states, this state may get called
+ multiple times: once per timestep while delaying. To ensure
+ any actions which are supposed to happen only happen once,
+ this function should be overriden in subclasses.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="../../../../org/mitre/synthea/engine/State.Delayable.html#process-org.mitre.synthea.world.agents.Person-long-">process</a></code>&nbsp;in class&nbsp;<code><a href="../../../../org/mitre/synthea/engine/State.Delayable.html" title="class in org.mitre.synthea.engine">State.Delayable</a></code></dd>
+<dd><code><a href="../../../../org/mitre/synthea/engine/State.Delayable.html#processOnce-org.mitre.synthea.world.agents.Person-long-">processOnce</a></code>&nbsp;in class&nbsp;<code><a href="../../../../org/mitre/synthea/engine/State.Delayable.html" title="class in org.mitre.synthea.engine">State.Delayable</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>person</code> - : the person being simulated</dd>
-<dd><code>time</code> - : the date within the simulated world</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>`true` if processing should continue to the next state, `false` if the processing
-         should halt for this time step.</dd>
+<dd><code>person</code> - the person being simulated</dd>
+<dd><code>time</code> - the date within the simulated world</dd>
 </dl>
 </li>
 </ul>

@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":10};
+var methods = {"i0":6,"i1":10,"i2":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -218,6 +218,13 @@ extends <a href="../../../../org/mitre/synthea/engine/State.html" title="class i
 <div class="block">Process this State with the given Person at the specified time within the simulation.</div>
 </td>
 </tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/mitre/synthea/engine/State.Delayable.html#processOnce-org.mitre.synthea.world.agents.Person-long-">processOnce</a></span>(<a href="../../../../org/mitre/synthea/world/agents/Person.html" title="class in org.mitre.synthea.world.agents">Person</a>&nbsp;person,
+           long&nbsp;time)</code>
+<div class="block">Process any aspect of this state which should only happen once.</div>
+</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.org.mitre.synthea.engine.State">
@@ -289,6 +296,26 @@ extends <a href="../../../../org/mitre/synthea/engine/State.html" title="class i
 <h4>endOfDelay</h4>
 <pre>public abstract&nbsp;long&nbsp;endOfDelay(long&nbsp;time,
                                 <a href="../../../../org/mitre/synthea/world/agents/Person.html" title="class in org.mitre.synthea.world.agents">Person</a>&nbsp;person)</pre>
+</li>
+</ul>
+<a name="processOnce-org.mitre.synthea.world.agents.Person-long-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>processOnce</h4>
+<pre>public&nbsp;void&nbsp;processOnce(<a href="../../../../org/mitre/synthea/world/agents/Person.html" title="class in org.mitre.synthea.world.agents">Person</a>&nbsp;person,
+                        long&nbsp;time)</pre>
+<div class="block">Process any aspect of this state which should only happen once.
+ Because of the nature of Delay states, this state may get called
+ multiple times: once per timestep while delaying. To ensure
+ any actions which are supposed to happen only happen once,
+ this function should be overriden in subclasses.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>person</code> - the person being simulated</dd>
+<dd><code>time</code> - the date within the simulated world</dd>
+</dl>
 </li>
 </ul>
 <a name="process-org.mitre.synthea.world.agents.Person-long-">
