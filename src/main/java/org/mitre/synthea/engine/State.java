@@ -1455,12 +1455,15 @@ public abstract class State implements Cloneable, Serializable {
       }
       if ((duration != null || distribution != null) && this.stop == null) {
         double durationVal;
+        String procedureDurationUnit;
         if (duration != null) {
           durationVal = person.rand(duration.low, duration.high);
+          procedureDurationUnit = duration.unit;
         } else {
           durationVal = distribution.generate(person);
+          procedureDurationUnit = this.unit;
         }
-        this.stop = procedure.start + Utilities.convertTime(duration.unit, (long) durationVal);
+        this.stop = procedure.start + Utilities.convertTime(procedureDurationUnit, (long) durationVal);
         procedure.stop = this.stop;
       }
       // increment number of procedures by respective hospital
