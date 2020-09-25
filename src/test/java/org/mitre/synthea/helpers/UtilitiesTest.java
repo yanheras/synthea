@@ -33,6 +33,17 @@ public class UtilitiesTest {
     int earlierYear = Utilities.getYear(earlierTime);
     assertEquals(gap, (year - earlierYear));
   }
+  
+  @Test
+  public void testFractionalDurations() {
+      assertEquals(500, Utilities.convertTime("seconds", 0.5));
+      assertEquals(Utilities.convertTime("minutes", 0.5), Utilities.convertTime("seconds", 30));
+      assertEquals(Utilities.convertTime("hours", 0.5), Utilities.convertTime("minutes", 30));
+      assertEquals(Utilities.convertTime("days", 0.5), Utilities.convertTime("hours", 12));
+      assertEquals(Utilities.convertTime("weeks", 0.5), Utilities.convertTime("days", 3));
+      assertEquals(Utilities.convertTime("months", 0.5), Utilities.convertTime("days", 15));
+      assertEquals(Utilities.convertTime("years", 0.5), Utilities.convertTime("weeks", 26));
+  }
 
   @Test
   public void testGetYear() {
